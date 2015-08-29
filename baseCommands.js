@@ -22,6 +22,6 @@ module.exports = function (Spawn) {
     console.log("Guard created");
   };
   Creep.prototype.getSpawnBase = function(){
-    return getObjectById(this.memory.baseSpawnId);
+    return Game.getObjectById(this.memory.baseSpawnId);
   }
 }
