@@ -4,6 +4,7 @@ module.exports = function (creep) {
       creep.moveTo(targets[0]);
       creep.attack(targets[0]);
     }else{
-      creep.moveTo(creep.getSpawnBase());
+      if(Game.flags.guardPoint != undefined) creep.moveTo(Game.flags.guardPoint);
+      else creep.moveTo(creep.getSpawnBase());
     }
   }
