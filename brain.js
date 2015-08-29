@@ -27,7 +27,7 @@ module.exports = function (Spawn) {
   }
   for(var i in Game.spawns) {
     var spawn = Game.spawns[i];
-    if(spawn.unitCount.harvesters < 1){
+    if(spawn.unitCount.harvesters < 2){
       spawn.createHarvesterCreep();
     }else if(spawn.unitCount.guards < 1){
       spawn.createGuardCreep();

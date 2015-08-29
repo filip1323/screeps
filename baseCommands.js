@@ -1,7 +1,7 @@
 module.exports = function (Spawn) {
   Spawn.prototype.roles = {
     worker : [MOVE, CARRY, WORK],
-    guard : [ATTACK, CARRY, MOVE]
+    guard : [ATTACK, ATTACK, MOVE]
   }
   Spawn.prototype.getNextIndex = function(){
     if(this.memory.index === undefined) this.memory.index = 0;
