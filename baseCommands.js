@@ -23,10 +23,9 @@ module.exports = function (Spawn) {
     return this.createCreep(this.roles.guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.getTargets = function(){
-    if(this.memory.targets == undefined || this.memory.targets.length == 0) return [];
     var targets = []
-    for(targetId in this.memory.targets){
-      targets[targets.length] = Game.getObjectById(targetId);
+    for(var i = 0; i < this.memory.targets.length; i++){
+      targets[targets.length] = Game.getObjectById(this.memory.targets[i]);
     }
     return targets;
   }

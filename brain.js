@@ -33,7 +33,7 @@ module.exports = function (Spawn) {
     var targets = spawn.room.find(FIND_HOSTILE_CREEPS);
     targets = targets.filter(
       function(element, index, array) {
-        return (element.owner.username!="Source Keeper");
+        return (element.owner.username!=="Source Keeper");
       });
     for(var i = 0; i < targets.length; i++){
       targets[i] = targets[i].id;
