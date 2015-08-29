@@ -8,16 +8,19 @@ module.exports = function (Spawn) {
     return this.memory.index++;
   };
   Spawn.prototype.createHarvesterCreep = function() {
+    if(!this.canCreateCreep(this.roles.worker)) return;
     var i = this.getNextIndex();
     var name = "harvester";
     return this.createCreep(this.roles.worker, name+i, {role: "harvester", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createBuilderCreep = function() {
+    if(!this.canCreateCreep(this.roles.worker)) return;
     var i = this.getNextIndex();
     var name = "builder";
     return this.createCreep(this.roles.worker, name+i, {role: "builder", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createGuardCreep = function() {
+    if(!this.canCreateCreep(this.roles.guard)) return;
     var i = this.getNextIndex();
     var name = "guard";
     return this.createCreep(this.roles.guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});

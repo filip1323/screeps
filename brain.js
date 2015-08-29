@@ -50,8 +50,6 @@ module.exports = function (Spawn) {
       spawn.createGuardCreep();
     }else if(spawn.unitCount.builders < 1){
       spawn.createBuilderCreep();
-    }else{
-      (spawn.unitCount.harvester > spawn.unitCount.guards) ? spawn.createGuardCreep() : spawn.createHarvesterCreep();
     }
   }
 
