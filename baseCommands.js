@@ -10,17 +10,17 @@ module.exports = function (Spawn) {
   Spawn.prototype.createHarvesterCreep = function() {
     var i = this.getNextIndex();
     var name = "harvester";
-    return this.createCreep(worker, name+i, {role: "harvester", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.worker, name+i, {role: "harvester", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createBuilderCreep = function() {
     var i = this.getNextIndex();
     var name = "builder";
-    return this.createCreep(worker, name+i, {role: "builder", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.worker, name+i, {role: "builder", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createGuardCreep = function() {
     var i = this.getNextIndex();
     var name = "guard";
-    return this.createCreep(guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});
   };
   Creep.prototype.getSpawnBase = function(){
     return Game.getObjectById(this.memory.baseSpawnId);
