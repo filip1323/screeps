@@ -22,7 +22,7 @@ module.exports = function (Spawn) {
 
     if(creep.memory.role == 'guard') {
       itsSpawn.unitCount.guards++;
-      builder(creep);
+      guard(creep);
     }
   }
   for(var i in Game.spawns) {
@@ -33,8 +33,12 @@ module.exports = function (Spawn) {
       spawn.createGuardCreep();
     }else if(spawn.unitCount.harvesters < 3){
       spawn.createHarvesterCreep();
-    }else if(spawn.UnitCount.guards < 3){
+    }else if(spawn.unitCount.guards < 3){
       spawn.createGuardCreep();
+    }else if(spawn.unitCount.builders < 1){
+      spawn.createBuilderCreep();
+    }else{
+      (spawn.unitCount.harvester > spawn.unitCount.guards) ? spawn.createGuardCreep() : spawn.createHarvesterCreep();
     }
   }
 
