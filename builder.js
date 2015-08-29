@@ -1,7 +1,7 @@
 module.exports = function (creep) {
   if(creep.carry.energy == 0) {
     creep.moveTo(creep.getSpawnBase());
-    Game.spawns.Spawn1.transferEnergy(creep);
+    creep.getSpawnBase().transferEnergy(creep);
   }
   else {
     var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
