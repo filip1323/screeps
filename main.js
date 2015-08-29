@@ -3,9 +3,8 @@ var guard = require('guard');
 var builder = require('builder');
 var initBaseCommands = require('baseCommands');
 
-initBaseCommands();
-
 var mainSpawnPoint = Game.spawns.Base;
+initBaseCommands(Spawn);
 
 var UnitCount = {
   harvesters: 0,
@@ -31,6 +30,6 @@ for(var name in Game.creeps) {
   }
 }
 
-if(UnitCount.harvesters < 1){
+if(UnitCount.harvesters < 3){
   mainSpawnPoint.createHarvesterCreep();
 }
