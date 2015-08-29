@@ -1,4 +1,5 @@
 module.exports = function (Spawn) {
+
   var harvester = require('harvester');
   var guard = require('guard');
   var builder = require('builder');
@@ -27,6 +28,18 @@ module.exports = function (Spawn) {
   }
   for(var i in Game.spawns) {
     var spawn = Game.spawns[i];
+
+
+    var targets = spawn.room.find(FIND_HOSTILE_CREEPS);
+    targets = targets.filter(
+      function(element, index, array) {
+        return (element.owner.username!="Source Keeper");
+      });
+    for(var i = 0; i < targets.length; i++){
+      targets[i] = targets[i].id;
+    }
+    spawn.memory.targets = targets;
+
     if(spawn.unitCount.harvesters < 2){
       spawn.createHarvesterCreep();
     }else if(spawn.unitCount.guards < 1){
