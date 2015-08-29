@@ -5,7 +5,7 @@ module.exports = function (creep) {
     creep.harvest(sources[0]);
   }
   else {
-    creep.moveTo(creep.memory.baseSpawn);
-    creep.transferEnergy(creep.memory.baseSpawn);
+    creep.moveTo(creep.memory.getSpawnBase());
+    creep.transferEnergy(creep.getSpawnBase());
   }
 }
