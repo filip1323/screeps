@@ -1,4 +1,8 @@
 module.exports = function (Spawn) {
+  Spawn.prototype.roles = {
+    worker : [MOVE, CARRY, WORK],
+    guard : [ATTACK, CARRY, MOVE]
+  }
   Spawn.prototype.getNextIndex = function(){
     if(this.memory.index === undefined) this.memory.index = 0;
     return this.memory.index++;
@@ -6,20 +10,17 @@ module.exports = function (Spawn) {
   Spawn.prototype.createHarvesterCreep = function() {
     var i = this.getNextIndex();
     var name = "harvester";
-    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "harvester", index: i, baseSpawnId : this.id});
-    console.log("Harvester created");
+    return this.createCreep(worker, name+i, {role: "harvester", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createBuilderCreep = function() {
     var i = this.getNextIndex();
     var name = "builder";
-    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "builder", index: i, baseSpawnId : this.id});
-    console.log("Builder created");
+    return this.createCreep(worker, name+i, {role: "builder", index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createGuardCreep = function() {
     var i = this.getNextIndex();
     var name = "guard";
-    return this.createCreep([ATTACK, CARRY, MOVE], name+i, {role: "guard", index: i, baseSpawnId : this.id});
-    console.log("Guard created");
+    return this.createCreep(guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});
   };
   Creep.prototype.getSpawnBase = function(){
     return Game.getObjectById(this.memory.baseSpawnId);
