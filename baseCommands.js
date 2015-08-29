@@ -6,19 +6,19 @@ module.exports = function (Spawn) {
   Spawn.prototype.createHarvesterCreep = function() {
     var i = this.getNextIndex();
     var name = "harvester";
-    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "harvester", "index": i});
+    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "harvester", "index": i, baseSpawn : this});
     console.log("Harvester created");
   };
   Spawn.prototype.createBuilderCreep = function() {
     var i = this.getNextIndex();
     var name = "builder";
-    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "builder", "index": i});
+    return this.createCreep([MOVE, CARRY, WORK], name+i, {role: "builder", "index": i, baseSpawn : this});
     console.log("Builder created");
   };
   Spawn.prototype.createGuardCreep = function() {
     var i = this.getNextIndex();
     var name = "guard";
-    return this.createCreep([ATTACK, CARRY, MOVE], name+i, {role: "guard", "index": i});
+    return this.createCreep([ATTACK, CARRY, MOVE], name+i, {role: "guard", "index": i, baseSpawn : this});
     console.log("Guard created");
   };
 }
