@@ -3,10 +3,12 @@ module.exports = function (Spawn) {
   var harvester = require('harvester');
   var guard = require('guard');
   var builder = require('builder');
+  var builder = require('healer');
   Spawn.prototype.unitCount = {
     harvesters: 0,
     builders: 0,
-    guards: 0
+    guards: 0,
+    healers: 0
   }
   for(var name in Game.creeps) {
     var creep = Game.creeps[name];
@@ -24,6 +26,11 @@ module.exports = function (Spawn) {
     if(creep.memory.role == 'guard') {
       itsSpawn.unitCount.guards++;
       guard(creep);
+    }
+
+    if(creep.memory.role == 'healer') {
+      itsSpawn.unitCount.healers++;
+      healer(creep);
     }
   }
   for(var i in Game.spawns) {
@@ -48,6 +55,8 @@ module.exports = function (Spawn) {
       spawn.createHarvesterCreep();
     }else if(spawn.unitCount.guards < 3){
       spawn.createGuardCreep();
+    }else if(spawn.unitCount.healers < 1){
+      spawn.createHealerCreep();
     }else if(spawn.unitCount.builders < 2){
       spawn.createBuilderCreep();
     }else if(spawn.unitCount.guards < 5){

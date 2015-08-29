@@ -2,6 +2,7 @@ module.exports = function (Spawn) {
   Spawn.prototype.roles = {
     worker : [MOVE, CARRY, WORK],
     guard : [TOUGH, ATTACK, MOVE],
+    healer : [HEAL, MOVE],
     transporter : [CARRY, CARRY, MOVE]
   }
   Spawn.prototype.getNextIndex = function(){
@@ -12,19 +13,25 @@ module.exports = function (Spawn) {
     if(this.canCreateCreep(this.roles.worker)) return;
     var i = this.getNextIndex();
     var name = "harvester";
-    return this.createCreep(this.roles.worker, name+i, {role: "harvester", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.worker, name+i, {role: name, index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createBuilderCreep = function() {
     if(this.canCreateCreep(this.roles.worker)) return;
     var i = this.getNextIndex();
     var name = "builder";
-    return this.createCreep(this.roles.worker, name+i, {role: "builder", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.worker, name+i, {role: name, index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.createGuardCreep = function() {
     if(this.canCreateCreep(this.roles.guard)) return;
     var i = this.getNextIndex();
     var name = "guard";
-    return this.createCreep(this.roles.guard, name+i, {role: "guard", index: i, baseSpawnId : this.id});
+    return this.createCreep(this.roles.guard, name+i, {role: name, index: i, baseSpawnId : this.id});
+  };
+  Spawn.prototype.createHealerCreep = function() {
+    if(this.canCreateCreep(this.roles.healer)) return;
+    var i = this.getNextIndex();
+    var name = "healer";
+    return this.createCreep(this.roles.healer, name+i, {role: name, index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.getTargets = function(){
     var targets = []
