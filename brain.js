@@ -46,7 +46,7 @@ module.exports = function (Spawn) {
       targets[i] = targets[i].id;
     }
     spawn.memory.targets = targets;
-
+    spawn.memory.allowControllerUpgrade = false;
     if(spawn.unitCount.harvesters < 2){
       spawn.createHarvesterCreep();
     }else if(spawn.unitCount.guards < 1){
@@ -55,12 +55,14 @@ module.exports = function (Spawn) {
       spawn.createHarvesterCreep();
     }else if(spawn.unitCount.guards < 3){
       spawn.createGuardCreep();
-    }else if(spawn.unitCount.healers < 1){
+    }else if(spawn.unitCount.healers < 2){
       spawn.createHealerCreep();
     }else if(spawn.unitCount.builders < 2){
       spawn.createBuilderCreep();
-    }else if(spawn.unitCount.guards < 5){
+    }else if(spawn.unitCount.guards < 6){
       spawn.createGuardCreep();
+    }else{
+      spawn.memory.allowControllerUpgrade = true;
     }
   }
 

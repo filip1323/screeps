@@ -1,7 +1,7 @@
 module.exports = function (Spawn) {
   Spawn.prototype.roles = {
     worker : [MOVE, CARRY, WORK],
-    guard : [TOUGH, ATTACK, MOVE],
+    guard : [TOUGH, MOVE, ATTACK],
     healer : [HEAL, MOVE],
     transporter : [CARRY, CARRY, MOVE]
   }
