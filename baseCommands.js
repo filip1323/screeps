@@ -32,6 +32,12 @@ module.exports = function (Spawn) {
     var i = this.getNextIndex();
     var name = "healer";
     return this.createCreep(this.roles.healer, name+i, {role: name, index: i, baseSpawnId : this.id});
+  }
+  ;Spawn.prototype.createTransporterCreep = function() {
+    if(this.canCreateCreep(this.roles.transporter)) return;
+    var i = this.getNextIndex();
+    var name = "transporter";
+    return this.createCreep(this.roles.transporter, name+i, {role: name, index: i, baseSpawnId : this.id});
   };
   Spawn.prototype.getTargets = function(){
     var targets = []
