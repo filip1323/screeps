@@ -3,7 +3,7 @@ module.exports = function (Spawn) {
   var harvester = require('harvester');
   var guard = require('guard');
   var builder = require('builder');
-  var builder = require('healer');
+  var healer = require('healer');
   Spawn.prototype.unitCount = {
     harvesters: 0,
     builders: 0,

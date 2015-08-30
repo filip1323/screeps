@@ -7,11 +7,11 @@ module.exports = function (creep) {
   }else{
     for(var name in Game.creeps) {
       var otherCreep = Game.creeps[name];
-      if(otherCreep.energy.hits < otherCreep.energy.hitsMax){
+      if(otherCreep.hits < otherCreep.hitsMax){
         creep.moveTo(otherCreep);
         creep.heal(otherCreep);
+        break;
       }
-      break;
     }
 
   }
