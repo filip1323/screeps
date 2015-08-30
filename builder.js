@@ -7,7 +7,7 @@ module.exports = function (creep) {
     if(targets.length) {
       creep.moveTo(targets[0]);
       creep.build(targets[0]);
-    }else if(creep.getSpawnBase.memory.allowControllerUpgrade){
+    }else if(creep.getSpawnBase().memory.allowControllerUpgrade){
       creep.moveTo(creep.room.controller);
       creep.upgradeController(creep.room.controller);
     }
